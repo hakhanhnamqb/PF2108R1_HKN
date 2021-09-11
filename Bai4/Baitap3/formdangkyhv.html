@@ -5,54 +5,119 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .tablestyle{
+            width: 500px;
+        }
+        .tablestyle td{
+            width: 150px 35px;
+        }
+        .tablestyle p{
+            margin: 4px;
+        }
+        .backgroundcolor{
+            background-color: aqua;
+            align-items: center;
+        }
+    </style>
 </head>
-<body>
-    <form action="" method="GET">
-        <fieldset>
-            <p style= "background-color: orange; text-align: center;">SỞ THÍCH CỦA BẠN</p>
-            <p> 
-                <div style="text-align: left;">Họ và tên: </div>
-                <input type="text" name="yourname" size="50">
-            </p>
-            <p style="text-align: center;">Email:
-                <input type="text" name="email" size="40">
-            </p>
-            <p style="text-align: center;">Sở thích
-                <input type="checkbox" name="hobby">Thể Thao
-                <input type="checkbox" name="hobby">Âm nhạc
-                <input type="checkbox" name="hobby">Đọc sách <br>
-                <input type="checkbox" name="hobby">Lướt web
-                <input type="checkbox" name="hobby">Chơi game
-                <input type="checkbox" name="hobby">Điện ảnh <br>
-                <input type="checkbox" name="hobby">Du lịch
-            </p>
-            <input type="submit" name="Submit From" value="Gửi thông tin">
-            <input type="reset" name="Reset Form" value="Nhập lại">
+<body class="backgroundcolor">
+    <form action="login.php" method="POST" class="formstyle">
+        <fieldset style="width: 500px; background-color: white;">
+            <p style= "background-color: orange; text-align: center; margin: 0px;">SỞ THÍCH CỦA BẠN</p>
+            <table class="tablestyle">
+                <tr>
+                    <td>
+                        <p style="text-align: right;">Họ và tên:</p>
+                    </td>
+                    <td>
+                        <p><input type="text" name="yourname" ></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="text-align: right;">Email:</p>
+                    </td>
+                    <td>
+                        <p><input type="text" name="email"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:text-top;">
+                        <p style="text-align: right; ">Sở thích:</p>
+                    </td>
+                    <td>
+                        <p style="text-align: left;">
+                            <input type="checkbox" name="hobby">Thể Thao
+                            <input type="checkbox" name="hobby">Âm nhạc
+                            <input type="checkbox" name="hobby">Đọc sách <br>
+                            <input type="checkbox" name="hobby">Lướt web
+                            <input type="checkbox" name="hobby">Chơi game
+                            <input type="checkbox" name="hobby">Điện ảnh <br>
+                            <input type="checkbox" name="hobby">Du lịch
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="Submit From" value="Gửi thông tin"/>
+                        <input type="reset" name="Reset Form" value="Nhập lại"/>
+                    </td>
+                </tr>
+            </table>
         </fieldset>
     </form>
-    <form action="">
-        <table style="border-collapse: collapse; border-color: black; width: 100;">
-            <tr>
-                <td style= "width: 500;">
-                    <p style="text-align: right;">Họ và tên:</p>
-                    <p style="text-align: right;">Email:</p>
-                    <p style="text-align: right;">Sở thích</p>
-                </td>
-                <td>
-                    <p><input type="text" name="yourname" size="50"></p>
-                    <p><input type="text" name="email" size="40"></p>
-                    <p style="text-align: center;">
-                        <input type="checkbox" name="hobby">Thể Thao
-                        <input type="checkbox" name="hobby">Âm nhạc
-                        <input type="checkbox" name="hobby">Đọc sách <br>
-                        <input type="checkbox" name="hobby">Lướt web
-                        <input type="checkbox" name="hobby">Chơi game
-                        <input type="checkbox" name="hobby">Điện ảnh <br>
-                        <input type="checkbox" name="hobby">Du lịch
-                    </p>
-                </td>
-            </tr>
-        </table>
+    <hr>
+    <form action="login.php" method="POST">
+        <fieldset style="background-color: khaki;">
+            <table class="tablestyle"  style="border-color: black; border-collapse: collapse;">
+                <tr>
+                    <td>
+                        <p>Họ và tên:</p>
+                    </td>
+                    <td>
+                        <p><input type="text" name="yourname" ></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><p>Ngày sinh:</p></td>
+                    <td><p><input type="number" name="Birthday" ></p></td>
+                </tr>
+                <tr>
+                    <td><p>Giới tính:</p></td>
+                    <td>
+                        <input type="radio" name="gender" value="Nam"> Nam
+                        <input type="radio" name="gender" value="Nu"> Nữ
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:text-top;"><p>Địa chỉ:</p></td>
+                    <td><p><input type="text" name="adress" style="height: 60px;" ></p></td>
+                </tr>
+                <tr>
+                    <td><p>Lớp:</p></td>
+                    <td>&nbsp;<select name="class" id="" >
+                        <option value=""> --Chọn lớp--</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td><p>Email:</p></td>
+                    <td><p><input type="text" name="email" placeholder="abc@email.com" ></p></td>
+                </tr>
+                <tr>
+                    <td><p>Điện thoại:</p></td>
+                    <td><p><input type="tel" name="phone" ></p></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td> 
+                        <input type="submit" name="Submit From" value="Đăng ký"/>
+                        <input type="reset" name="Reset Form" value="Nhập lại"/>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
     </form>
 </body>
 </html>
