@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="color: Purple ;">A Simple Form</h1>
+    <h2 style="color:#FF4E5D ">Form Fundamental</h2>
+    <form action="">
+        <fieldset>
+            <legend>Customer Info</legend>
+            <p>Name:
+                <input type="text" name="name" placeholder="Enter your name" size="50" autofocus>
+            </p>
+            <p>Telephone:
+                <input type="tel" name="telephone" placeholder="pattern: 1-234-567-8910" size="50">
+            </p>
+            <p>Email Adress:
+                <input type="email" name="email" placeholder="Enter your email adress" size="50">
+            </p>
+            <p>Gender:
+                <input type="radio" name="gender" value="male" id="male">
+                <label for="male" >Male</label>
+                <input type="radio" name="gender" value="female" id="female">
+                <label for="female">Female</label>
+            </p>
+            <p>Hobbies:
+                <input type="checkbox" name="hb[]" value="b1" id="b1">
+                <label for="b1">Basketball</label>
+                <input type="checkbox" name="hb[]" value="b2" id="b2">
+                <label for="b2">Football</label>
+                <input type="checkbox" name="hb[]" value="b3" id="b3">
+                <label for="b3">Badminton</label>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Books</legend>
+            <p>
+                Name: <input type="text" name="book" size="50">
+                Quantity (Maximum 5): <input type="number" name="numbook"  min="1" max="5" size="1">
+            </p>
+        </fieldset>
+    </form>
+    <input type="submit">
+    <input type="reset">
+</body>
+</html>
