@@ -10,10 +10,10 @@
     <script>
         let number = parseInt(prompt("Nhập vào một số bất kỳ:"));
         let strNumber = "";
-        while (number>=0){
+        while (number>0){
             let mod = number % 10;
             strNumber = strNumber + mod;
-            number = number/10;
+            number = parseInt(number/10);
         }
         alert(strNumber);
     </script>
