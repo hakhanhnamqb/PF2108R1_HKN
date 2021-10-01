@@ -10,11 +10,11 @@
 
 <body>
     <script>
-        let numbers = parseInt(prompt("Số lượng số nguyên tố cần lấy:"));
+        //let numbers = parseInt(prompt("Số lượng số nguyên tố cần lấy:"));
         let count = 0;
         let n = 2;
 
-        while (count < numbers) {
+        while (count <=20) {
             if (n == 2) {
                 count++;
                 document.write(n + "<br>");
@@ -22,10 +22,11 @@
             }
             else {
                 let temp = 0;
-                for (let i = 2; (i < n-1) && (temp == 0); i++) {
+                for (let i = 2; (i < (n-1)) && (temp == 0); i++) {
                     if ((n % i) == 0) {
                         temp = 1;
-                        break;
+                        n++;
+                        //break;
                     }
                 }
                 if (temp == 0) {
