@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <span id="color"></span>
+    <hr>
+    <input type="text" name="text" id="text">
+    <button id="display">Display</button>
+    <hr>
+    <span id="displayStr"></span>
+    <hr>
+    <span id="display_uplow"></span>
+    <script>
+        let color = document.getElementById("color");
+        let str_text = document.getElementById("text");
+        let bt_display = document.getElementById("display");
+        let myColor = ["Red", "Green", "White", "Black"];
+        let display_str = document.getElementById("displayStr");
+        let up_low = document.getElementById("display_uplow");
+        color.innerHTML = strJoin(myColor);
+        console.log(strJoin(myColor));
+        function strJoin(myColor) {
+            let strColor = myColor.join(",");
+            return strColor;
+        }
+        bt_display.addEventListener('click', function () {
+            let temp = str_text.value;
+            let text_len = `${temp.length}`;
+            let display = "";
+            let display_uplow = "";
+            //alert(typeof(temp));
+            for (let i = 0; i < text_len; i++) {
+                let num = parseInt(temp[i]);
+                if ((num % 2) == 0) {
+                    display += temp[i] + "-"
+                }
+                else {
+                    display += temp[i];
+                }
+            }
+            display_str.innerHTML = display;
+            for (let i = 0; i < text_len; i++) {
+                if (temp[i] == temp[i].toUpperCase()) {
+                    display_uplow += temp[i].toLowerCase();
+                }
+                else{
+                    display_uplow += temp[i].toUpperCase();
+                }
+            }
+            up_low.innerHTML = display_uplow;
+        })
+    </script>
+
+</body>
+
+</html>
