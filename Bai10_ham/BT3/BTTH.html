@@ -38,9 +38,22 @@
                 alert("Tổng hai số là: " + (number1+number2));
             }
         });
-        lesson2.addEventListener('click', function(){
-            let array = [""]
+        lesson7.addEventListener('click', function(){
+            let num1 = parseInt(prompt("Nhập vào nguyên số đầu tiên:"));
+            let num2 = parseInt(prompt("Nhập vào nguyên số thứ hai:"));
+            let num3 = parseInt(prompt("Nhập vào nguyên số thứ 3:"));
+            alert("Số nhỏ nhất là : " + find_min(num1, num2, num3));
         });
+        function find_min(a,b,c){
+            let min = a;
+            if (min >= b){
+                min = b;
+            }
+            if (min >= c){
+                min = c;
+            }
+            return min;
+        }
     </script>
 </body>
 </html>
