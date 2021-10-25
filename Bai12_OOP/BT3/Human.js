@@ -9,7 +9,7 @@ class Human {
         else
             this.sex = false;
     };
-    setWeight(weight){
+    /* setWeight(weight){
         this.weight = weight;
-    }
+    } */
 }
