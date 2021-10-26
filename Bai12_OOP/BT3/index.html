@@ -12,8 +12,23 @@
     <script>
         let apple = new Apple(10);
         let Adam = new Human("Adam", true, 60);
+        console.log(Adam);
         let Eva = new Human("Eva", false, 40);
-
+        console.log(Eva);
+        let eat_no = 0;
+        while(apple.isEmpty()){
+            if (eat_no%2==0){
+                Adam.eat(apple);
+                Adam.say();
+            }
+            else{
+                Eva.eat(apple);
+                Eva.say()
+            }
+            eat_no++;
+        }
+        console.log(Adam);
+        console.log(Eva);
     </script>
 </body>
 </html>

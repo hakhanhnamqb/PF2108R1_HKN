@@ -4,31 +4,36 @@ class Human {
         this.sex = sex;
         this.weight = weight;
     };
+    isMale() {
+        return this.sex;
+    }
     setGender(sex) {
-        if (this.name == "Adam")
+        if (isMale)
             this.sex = true;
         else
             this.sex = false;
     };
-    getName(){
+    getName() {
         return this.name;
     };
-    setName(name){
+    setName(name) {
         this.name = name;
     };
-    getWeight(){
+    getWeight() {
         return this.weight;
     }
-    setWeight(weight){
+    setWeight(weight) {
         this.weight = weight;
     }
-    eat(apple){
-        this.apple.decrease();
-        if (apple.getWeight>0)
-        this.weight++;
+    eat(apple) {
+        apple.decrease();
+        if (apple.isEmpty()) {
+            this.weight++;
+            this.setWeight(this.weight);
+        }
     };
-    say(){
-        console.log(this.name + " đã ăn một miếng táo <br/>");
+    say() {
+        console.log(`Tôi là ${this.name} đã ăn một miếng`);
     }
 
 }

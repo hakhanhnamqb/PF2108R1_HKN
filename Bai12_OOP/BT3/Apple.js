@@ -3,14 +3,12 @@ class Apple {
         this.weight = weight;
     };
     decrease() {
-        if (this.weight > 0)
+        console.log(`Táo còn ${this.weight} miếng`);
+        if (this.isEmpty())
             this.weight--;
     };
-    isEmtpty() {
-        if (this.weight > 0)
-            return true;
-        else
-            return false;
+    isEmpty() {
+        return this.weight >= 0;
     }
     getWeight() {
         return this.weight;
