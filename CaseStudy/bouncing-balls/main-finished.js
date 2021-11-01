@@ -68,10 +68,11 @@ class Ball {
   };
 }
 class Bar {
-  constructor(widthBar, xBar, yBar) {
+  constructor(widthBar, xBar, yBar, velBar) {
     this.widthBar = widthBar;
     this.xBar = xBar;
     this.yBar = yBar;
+    this.velBar = velBar;
   };
   //xác định phương pháp vẽ thanh Bar
   drawBar() {
@@ -82,14 +83,17 @@ class Bar {
 
   };
   go_right() {
-    if (this.xBar+100 < width){
-      this.xBar+=10;
+    if (this.xBar + 100 < width) {
+      this.xBar += this.velBar;
     }
   };
   go_left() {
-    if (this.xBar > 0 ){
-      this.xBar-=10;
+    if (this.xBar > 0) {
+      this.xBar -= this.velBar;
     }
+  }
+  clearRecLast() {
+    ctx.clearRect(this.xBar, this.yBar, this.widthBar, 10);
   }
 }
 
@@ -160,7 +164,8 @@ while (balls.length < 1) {
 }
 
 // define Bar
-let bar = new Bar(100, (width / 2) + 10, height - 20);
+let bar = new Bar(100, (width / 2) - 10, height - 20, 30);
+bar.drawBar();
 
 // define loop that keeps drawing the scene constantly   /định nghĩa vòng lặp giúp vẽ cảnh liên tục
 
@@ -168,7 +173,7 @@ function loop() {
   ctx.beginPath();
   ctx.fillStyle = 'rgba(0,0,0,0.25)';
   ctx.fillRect(0, 0, width, height);
-  
+
   for (let i = 0; i < balls.length; i++) {
     balls[i].draw();
     bar.drawBar();
@@ -178,16 +183,19 @@ function loop() {
   }
 
   requestAnimationFrame(loop);
-  $(document).keydown(function (e) {
-    if ((e.keyCode || e.which) == 37) // left arrow
-    {
-      bar.go_left();
-    }
-    else if ((e.keyCode || e.which) == 39)    // right arrow
-    {
-      bar.go_right();
-    }
-  });
+  
 }
+$(document).keydown(function (e) {
+  if ((e.keyCode || e.which) == 37) // left arrow
+  {
+    bar.clearRecLast();
+    bar.go_left();
+  }
+  else if ((e.keyCode || e.which) == 39)    // right arrow
+  {
+    bar.clearRecLast();
+    bar.go_right();
+  }
+});
 
 loop();

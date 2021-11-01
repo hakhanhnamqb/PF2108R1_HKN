@@ -10,20 +10,19 @@
 </head>
 
 <body>
-    <canvas></canvas>
+    <canvas id="canvas"></canvas>
     <script>
-        const canvas = document.querySelector('canvas');
+        const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
 
         const width = canvas.width = window.innerWidth;
         const height = canvas.height = window.innerHeight;
         class Bar {
-            constructor(widthBar, xBar, yBar,x_velBar,y_velBar) {
+            constructor(widthBar, xBar, yBar,velBar) {
                 this.widthBar = widthBar;
                 this.xBar = xBar;
                 this.yBar = yBar;
-                this.x_velBar = x_velBar;
-                this.y_velBar = y_velBar;
+                this.velBar = velBar;
             };
             //xác định phương pháp vẽ thanh Bar
             drawBar() {
@@ -35,49 +34,36 @@
             };
             go_right() {
                 if (this.xBar + 100 < width) {
-                    this.xBar += 10;
+                    this.xBar += this.velBar;
                 }
             };
             go_left() {
                 if (this.xBar > 0) {
-                    this.xBar -= 10;
+                    this.xBar -= this.velBar;
                 }
             }
-            update() {
-                if ((this.xBar + 10) >= width) {
-                    this.velX = -(this.velX);
-                }
-
-                if ((this.x - this.size) <= 0) {
-                    this.velX = -(this.velX);
-                }
-
-                if ((this.y + this.size) >= height) {
-                    this.velY = -(this.velY);
-                }
-
-                if ((this.y - this.size) <= 0) {
-                    this.velY = -(this.velY);
-                }
-
-                this.x += this.velX;
-                this.y += this.velY;
-            };
+            clearRecLast(){
+                ctx.clearRect(this.xBar, this.yBar, this.widthBar, 10);
+            }
         }
-        let bar = new Bar(100, (width / 2) + 10, height - 20,);
+        let bar = new Bar(100, (width / 2) - 10, height - 20,20);
         bar.drawBar();
         function loop() {
-            requestAnimationFrame(loop);
             $(document).keydown(function (e) {
                 if ((e.keyCode || e.which) == 37) // left arrow
                 {
+                    bar.clearRecLast();
                     bar.go_left();
+                    bar.drawBar();
                 }
                 else if ((e.keyCode || e.which) == 39)    // right arrow
                 {
+                    bar.clearRecLast();
                     bar.go_right();
+                    bar.drawBar();
                 }
             });
+            //requestAnimationFrame(loop);
         }
 
         loop();
