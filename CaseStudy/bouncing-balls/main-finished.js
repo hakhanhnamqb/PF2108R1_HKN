@@ -33,7 +33,25 @@ class Ball {
   };
   //xác định phát hiện va chạm bóng
   collisionDetect() {
-    for (let j = 0; j < balls.length; j++) {
+    let Ax = this.x;
+    let Ay = this.y;
+    if (this.x < bar.xBar)
+      Ax = bar.xBar;
+    else if (this.x > bar.xBar + bar.widthBar)
+      Ax = bar.xBar + bar.widthBar;
+
+    if (this.y < bar.yBar)
+      Ay = bar.yBar;
+    else if (this.y > bar.yBar)
+      Ay = bar.yBar;
+    let dx = this.x - Ax;
+    let dy = this.y - Ay;
+    let distance = Math.sqrt(dx * dx + dy * dy);
+    if (distance < this.size)
+      return 1;
+    else
+      return 0;
+    /* for (let j = 0; j < balls.length; j++) {
       if (!(this === balls[j])) {
         const dx = this.x - balls[j].x;
         const dy = this.y - balls[j].y;
@@ -43,7 +61,7 @@ class Ball {
           balls[j].color = this.color = 'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')';
         }
       }
-    }
+    } */
   };
   //xác định phương pháp cập nhật bóng
   update() {
@@ -55,17 +73,28 @@ class Ball {
       this.velX = -(this.velX);
     }
 
-    if ((this.y + this.size) >= height) {
-      this.velY = -(this.velY);
+    if ((this.y + this.size) >= bar.yBar) {
+      if (this.collisionDetect())
+        this.velY = -(this.velY);
     }
 
     if ((this.y - this.size) <= 0) {
       this.velY = -(this.velY);
     }
-
+    /* if ((this.x + this.size) >= bar.xBar || (this.x + this.size) <= bar.xBar + bar.widthBar) {
+      this.velX = -(this.velX);
+    }
+    if ((this.y + this.size) >= bar.yBar) {
+      this.velY = -(this.velY);
+    } */
     this.x += this.velX;
     this.y += this.velY;
   };
+  ballOver() {
+    if (this.y + this.size >= width)
+      return true;
+  }
+
 }
 class Bar {
   constructor(widthBar, xBar, yBar, velBar) {
@@ -91,58 +120,20 @@ class Bar {
     if (this.xBar > 0) {
       this.xBar -= this.velBar;
     }
-  }
+  };
   clearRecLast() {
     ctx.clearRect(this.xBar, this.yBar, this.widthBar, 10);
+  };
+  getxBar() {
+    return this.xBar;
+  };
+  getyBar() {
+    return this.yBar;
+  };
+  getWidthBar() {
+    return this.widthBar;
   }
 }
-
-// define ball draw method, xác định phương pháp vẽ quả bóng
-/* Ball.prototype.draw = function () {
-  ctx.beginPath();
-  ctx.fillStyle = this.color;
-  ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
-  ctx.fill();
-}; */
-
-// define ball update method  /xác định phương pháp cập nhật bóng
-
-/* Ball.prototype.update = function () {
-  if ((this.x + this.size) >= width) {
-    this.velX = -(this.velX);
-  }
-
-  if ((this.x - this.size) <= 0) {
-    this.velX = -(this.velX);
-  }
-
-  if ((this.y + this.size) >= height) {
-    this.velY = -(this.velY);
-  }
-
-  if ((this.y - this.size) <= 0) {
-    this.velY = -(this.velY);
-  }
-
-  this.x += this.velX;
-  this.y += this.velY;
-}; */
-
-// define ball collision detection //xác định phát hiện va chạm bóng
-
-/* Ball.prototype.collisionDetect = function () {
-  for (let j = 0; j < balls.length; j++) {
-    if (!(this === balls[j])) {
-      const dx = this.x - balls[j].x;
-      const dy = this.y - balls[j].y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      if (distance < this.size + balls[j].size) {
-        balls[j].color = this.color = 'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')';
-      }
-    }
-  }
-}; */
 
 // define array to store balls and populate it  //xác định mảng để lưu trữ các quả bóng và điền nó vào
 
@@ -153,8 +144,8 @@ while (balls.length < 1) {
   let ball = new Ball(
     // ball position always drawn at least one ball width
     // away from the adge of the canvas, to avoid drawing errors
-    random(0 + size, width - size),
-    random(0 + size, height - size),
+    random(0 + size, width- size),
+    random(0 + size*2,size*4),
     5,
     5,
     'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')',
@@ -164,12 +155,13 @@ while (balls.length < 1) {
 }
 
 // define Bar
-let bar = new Bar(100, (width / 2) - 10, height - 20, 30);
+let bar = new Bar(200, (width / 2) - 100, height - 20, 30);
 bar.drawBar();
 
 // define loop that keeps drawing the scene constantly   /định nghĩa vòng lặp giúp vẽ cảnh liên tục
 
 function loop() {
+  let gameOver = false;
   ctx.beginPath();
   ctx.fillStyle = 'rgba(0,0,0,0.25)';
   ctx.fillRect(0, 0, width, height);
@@ -178,12 +170,17 @@ function loop() {
     balls[i].draw();
     bar.drawBar();
     balls[i].update();
-    balls[i].collisionDetect();
+    if (balls[i].ballOver()) {
+      gameOver = true;
+    }
+
 
   }
-
-  requestAnimationFrame(loop);
-  
+  if (!gameOver)
+    requestAnimationFrame(loop);
+  else {
+    console.log("game over");
+  }
 }
 $(document).keydown(function (e) {
   if ((e.keyCode || e.which) == 37) // left arrow
