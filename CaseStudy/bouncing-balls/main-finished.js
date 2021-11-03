@@ -51,17 +51,6 @@ class Ball {
       return 1;
     else
       return 0;
-    /* for (let j = 0; j < balls.length; j++) {
-      if (!(this === balls[j])) {
-        const dx = this.x - balls[j].x;
-        const dy = this.y - balls[j].y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < this.size + balls[j].size) {
-          balls[j].color = this.color = 'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')';
-        }
-      }
-    } */
   };
   mark() {
     if (this.collisionDetect()) {
@@ -87,12 +76,6 @@ class Ball {
     if ((this.y - this.size) <= 0) {
       this.velY = -(this.velY);
     }
-    /* if ((this.x + this.size) >= bar.xBar || (this.x + this.size) <= bar.xBar + bar.widthBar) {
-      this.velX = -(this.velX);
-    }
-    if ((this.y + this.size) >= bar.yBar) {
-      this.velY = -(this.velY);
-    } */
     this.x += this.velX;
     this.y += this.velY;
   };
@@ -160,7 +143,7 @@ while (balls.length < 1) {
 }
 
 // define Bar
-let bar = new Bar(200, (width / 2) - 100, height - 20, 30);
+let bar = new Bar(200, (width / 2) - 100, height - 20, 100);
 bar.drawBar();
 
 // define loop that keeps drawing the scene constantly   /định nghĩa vòng lặp giúp vẽ cảnh liên tục
