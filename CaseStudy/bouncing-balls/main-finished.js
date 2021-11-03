@@ -1,11 +1,11 @@
 // setup canvas
 
-const canvas = document.querySelector('canvas');
+const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 const width = canvas.width = window.innerWidth;
 const height = canvas.height = window.innerHeight;
-
+let point = 0;
 // function to generate random number
 
 function random(min, max) {
@@ -63,6 +63,12 @@ class Ball {
       }
     } */
   };
+  mark() {
+    if (this.collisionDetect()) {
+      point++;
+      disPoint.innerHTML = point;
+    }
+  }
   //xác định phương pháp cập nhật bóng
   update() {
     if ((this.x + this.size) >= width) {
@@ -112,7 +118,7 @@ class Bar {
 
   };
   go_right() {
-    if (this.xBar + 100 < width) {
+    if (this.xBar + this.widthBar < width) {
       this.xBar += this.velBar;
     }
   };
@@ -136,7 +142,6 @@ class Bar {
 }
 
 // define array to store balls and populate it  //xác định mảng để lưu trữ các quả bóng và điền nó vào
-
 let balls = [];
 
 while (balls.length < 1) {
@@ -144,8 +149,8 @@ while (balls.length < 1) {
   let ball = new Ball(
     // ball position always drawn at least one ball width
     // away from the adge of the canvas, to avoid drawing errors
-    random(0 + size, width- size),
-    random(0 + size*2,size*4),
+    random(0 + size, width - size),
+    random(0 + size * 2, size * 4),
     5,
     5,
     'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')',
@@ -159,6 +164,7 @@ let bar = new Bar(200, (width / 2) - 100, height - 20, 30);
 bar.drawBar();
 
 // define loop that keeps drawing the scene constantly   /định nghĩa vòng lặp giúp vẽ cảnh liên tục
+let disPoint = document.getElementById("point");
 
 function loop() {
   let gameOver = false;
@@ -173,13 +179,15 @@ function loop() {
     if (balls[i].ballOver()) {
       gameOver = true;
     }
-
-
+    balls[i].mark();
   }
   if (!gameOver)
     requestAnimationFrame(loop);
   else {
-    console.log("game over");
+    if (confirm("Congratulations, you got " + point + " points." + " Do you want to play again?") == true) {
+      gameOver = false;
+      location.reload();
+    }
   }
 }
 $(document).keydown(function (e) {

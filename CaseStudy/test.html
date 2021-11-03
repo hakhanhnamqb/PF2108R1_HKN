@@ -18,7 +18,7 @@
         const width = canvas.width = window.innerWidth;
         const height = canvas.height = window.innerHeight;
         class Bar {
-            constructor(widthBar, xBar, yBar,velBar) {
+            constructor(widthBar, xBar, yBar, velBar) {
                 this.widthBar = widthBar;
                 this.xBar = xBar;
                 this.yBar = yBar;
@@ -42,11 +42,11 @@
                     this.xBar -= this.velBar;
                 }
             }
-            clearRecLast(){
+            clearRecLast() {
                 ctx.clearRect(this.xBar, this.yBar, this.widthBar, 10);
             }
         }
-        let bar = new Bar(100, (width / 2) - 10, height - 20,20);
+        let bar = new Bar(100, (width / 2) - 10, height - 20, 20);
         bar.drawBar();
         function loop() {
             $(document).keydown(function (e) {

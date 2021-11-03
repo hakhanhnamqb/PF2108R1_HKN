@@ -23,3 +23,23 @@ html, body {
     color: transparent;
     text-shadow: 0 0 4px white;
   }
+  h2 {
+    font-size: 2rem;
+    letter-spacing: -1px;
+    position: absolute;
+    margin: 0;
+    top: 35px;
+    right: 80px;
+    color: transparent;
+    text-shadow: 0 0 2px red;
+  }
+  #point {
+    font-size: 2rem;
+    letter-spacing: -1px;
+    position: absolute;
+    margin: 0;
+    top: 35px;
+    right: 20px;
+    color: transparent;
+    text-shadow: 0 0 1px red;
+  }
