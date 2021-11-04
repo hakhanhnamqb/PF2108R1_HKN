@@ -43,3 +43,23 @@ html, body {
     color: transparent;
     text-shadow: 0 0 1px red;
   }
+  #bt_pause {
+    font-size: 2rem;
+    letter-spacing: -1px;
+    position: absolute;
+    margin: 0;
+    top: 80px;
+    right: 1px;
+    text-shadow: 0 0 1px orange;
+    background-color: rgba(0,0,0,0.25);
+  }
+  #bt_start {
+    font-size: 2rem;
+    letter-spacing: -1px;
+    position: absolute;
+    margin: 0;
+    top: 130px;
+    right: 10px;
+    text-shadow: 0 0 1px orange;
+    background-color: rgba(0,0,0,0.25);
+  }

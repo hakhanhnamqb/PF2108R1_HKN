@@ -148,7 +148,7 @@ bar.drawBar();
 
 // define loop that keeps drawing the scene constantly   /định nghĩa vòng lặp giúp vẽ cảnh liên tục
 let disPoint = document.getElementById("point");
-
+let pausegame = false;
 function loop() {
   let gameOver = false;
   ctx.beginPath();
@@ -164,7 +164,7 @@ function loop() {
     }
     balls[i].mark();
   }
-  if (!gameOver)
+  if (!gameOver || !pausegame)
     requestAnimationFrame(loop);
   else {
     if (confirm("Congratulations, you got " + point + " points." + " Do you want to play again?") == true) {
@@ -185,5 +185,10 @@ $(document).keydown(function (e) {
     bar.go_right();
   }
 });
+function start(){
+  loop();
+}
+function pause(){
+  pausegame = true;
+}
 
-loop();
