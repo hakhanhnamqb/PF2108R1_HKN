@@ -1,3 +1,8 @@
+// set up parameters
+let ball_radius = 15;
+let ball_vel = 5;
+let widthBar = 200;
+let velBar = 100;
 // setup canvas
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -8,6 +13,7 @@ let point = 0;
 let play = 1;
 let alternate = true;
 let sound = document.getElementById("audio");
+//sound.play();
 // function to generate random number
 function random(min, max) {
   const num = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -21,16 +27,16 @@ while (balls.length < 1) {
   let ball = new Ball(
     random(0 + size, width - size),
     random(0 + size * 2, size * 4),
-    5,
-    5,
+    ball_vel,
+    ball_vel,
     'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')',
-    15   //size
+    ball_radius   //radius
   );
   balls.push(ball);
 }
 
 // define Bar
-let bar = new Bar(200, (width / 2) - 100, height - 20, 100);
+let bar = new Bar(widthBar, (width / 2) - widthBar/2, height - 20, velBar);
 bar.drawBar();
 
 // define loop that keeps drawing the scene constantly   /định nghĩa vòng lặp giúp vẽ cảnh liên tục
@@ -38,7 +44,7 @@ let disPoint = document.getElementById("point");
 function loop() {
   let gameOver = false;
   ctx.beginPath();
-  ctx.fillStyle = 'rgba(0,0,0,0.25)';
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.548)';
   ctx.fillRect(0, 0, width, height);
 
   for (let i = 0; i < balls.length; i++) {
@@ -52,7 +58,14 @@ function loop() {
   }
   if (gameOver) {
     clearInterval(play);
-    if (confirm("Congratulations, you got " + point + " points." + " Do you want to play again?") == true) {
+    if (confirm("Chia buồn, bạn đã đạt " + point + " điểm." + " Bạn có muốn chơi lại?") == true) {
+      gameOver = false;
+      location.reload();
+    }
+  }
+  if (point>=3){
+    clearInterval(play);
+    if (confirm("Xin chúc mừng, bạn đã đạt " + point + " điểm." + " Bạn có muốn chơi lại?") == true) {
       gameOver = false;
       location.reload();
     }

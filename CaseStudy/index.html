@@ -10,23 +10,33 @@
 
 <body>
   <div class="display">
-    
     <div class="info">
-      <h1>Bouncing Balls</h1>
-      <h2>POINT:</h2>
-      <h3 id="point">0</h3>
-      <button id="bt_start" onclick="start()">Start</button>
-      <button id="bt_pause" onclick="pause()">Pause</button>
       <h3>1. Hướng dẫn chơi</h3>
-      <p>fbdfdfgdf</p>
-      <audio id="audio" loop controls>
+      <p>&#9679; Click chuột vào nút Start để bắt đầu chơi</p>
+      <p>&#9679; Người chơi sử dung hai phím di chuyển trái &larr; và phải &rarr; để điều khiển
+        thanh Bar</p>
+      <p>&#9679; Điểm số sẽ được tính (+1 điểm) sau mỗi lần viên bi chạm thanh Bar</p>
+      <p>&#9679; Click vào Pause nếu bạn muốn tạm dừng trò chơi (khi trò chơi chưa kết thúc)</p>
+      <p>&#9679;Cứ chơi đi vì trò chơi này không có điểm chiến thắng đâu:))</p>
+      <h3>2. Nút chức năng</h3>
+      <div style="padding: 0px;">
+        <button id="bt_start" onclick="start()">Start</button>
+        <button id="bt_pause" onclick="pause()">Pause</button>
+      </div>
+      
+      <audio autoplay id="audio"  controls loop hidden>
         <source src="./music/Christmas.mp3" type="audio/mpeg">
       </audio>
     </div>
   </div>
+
   <div class="playgame">
     <canvas id="canvas"></canvas>
+    <h1>Bouncing Balls</h1>
+    <h2>POINT:</h2>
+    <h3 id="point">0</h3>
   </div>
+
   <script src="Ball.js"></script>
   <script src="Bar.js"></script>
   <script src="main.js"></script>

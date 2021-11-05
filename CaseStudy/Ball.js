@@ -1,17 +1,17 @@
 class Ball {
-    constructor(x, y, velX, velY, color, size) {
+    constructor(x, y, velX, velY, color, radius) {
       this.x = x;
       this.y = y;
       this.velX = velX;
       this.velY = velY;
       this.color = color;
-      this.size = size;
+      this.radius = radius;
     };
     //xác định phương pháp vẽ quả bóng
     draw() {
       ctx.beginPath();
       ctx.fillStyle = this.color;
-      ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+      ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
       ctx.fill();
     };
     //xác định phát hiện va chạm bóng
@@ -30,7 +30,7 @@ class Ball {
       let dx = this.x - Ax;
       let dy = this.y - Ay;
       let distance = Math.sqrt(dx * dx + dy * dy);
-      if (distance < this.size)
+      if (distance < this.radius)
         return 1;
       else
         return 0;
@@ -39,31 +39,33 @@ class Ball {
       if (this.collisionDetect()) {
         point++;
         disPoint.innerHTML = point;
+        ball_vel++;
+        console.log(ball_vel);
       }
     }
     //xác định phương pháp cập nhật bóng
     update() {
-      if ((this.x + this.size) >= width) {
+      if ((this.x + this.radius) >= width) {
         this.velX = -(this.velX);
       }
   
-      if ((this.x - this.size) <= 0) {
+      if ((this.x - this.radius) <= 0) {
         this.velX = -(this.velX);
       }
   
-      if ((this.y + this.size) >= bar.yBar) {
+      if ((this.y + this.radius) >= bar.yBar) {
         if (this.collisionDetect())
           this.velY = -(this.velY);
       }
   
-      if ((this.y - this.size) <= 0) {
+      if ((this.y - this.radius) <= 0) {
         this.velY = -(this.velY);
       }
       this.x += this.velX;
       this.y += this.velY;
     };
     ballOver() {
-      if (this.y + this.size >= width)
+      if (this.y + this.radius >= width)
         return true;
     }
   

@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 html, body {
   margin: 0;
 }
@@ -15,18 +18,22 @@ body {
   position: relative;
 }
 .playgame {
+  position: relative;
+  float: left;
   width: 80%;
   height:100vh;
-  background-color: rgba(0,0,0,0.25);
+  background-color: rgba(0, 0, 0, 0.548);
 }
 #canvas{
   width: 100%;
   height: 100vh;
 }
 .info{
-  width: 20vh;
+  position: relative;
+  float: left;
+  width: 20%;
   height: 100vh;
-  background-color: rgba(rgb(16, 102, 151));
+  background-color: rgb(46, 67, 71);
 }
 h1 {
   font-size: 2rem;
@@ -49,36 +56,38 @@ h2 {
   color: transparent;
   text-shadow: 0 0 2px red;
 }
+h3{
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 0px;
+}
+button{
+  float: left;
+  width: 50%;
+  height: 30pt;
+  border-radius: 5px;
+  align-items: center;
+  background-color: pink;
+}
 #point {
   font-size: 2rem;
   letter-spacing: -1px;
   position: absolute;
   margin: 0;
-  top: 35px;
+  top: 25px;
   right: 20px;
   color: transparent;
   text-shadow: 0 0 1px red;
 }
-#bt_pause {
-  font-size: 2rem;
-  letter-spacing: -1px;
-  position: absolute;
-  margin: 0;
-  top: 80px;
-  right: 1px;
-  text-shadow: 0 0 1px orange;
-  background-color: rgba(0,0,0,0.25);
-}
-#bt_start {
-  font-size: 2rem;
-  letter-spacing: -1px;
-  position: absolute;
-  margin: 0;
-  top: 80px;
-  right: 110px;
-  text-shadow: 0 0 1px orange;
-  background-color: rgba(0,0,0,0.25);
-}
+
 #audio{
+  float:none;
   position: absolute;
+  size: 10px;
 }
+p, h3{
+  color: rgb(196, 122, 122);
+  margin: 10px;
+  padding: 10px;
+}
+
