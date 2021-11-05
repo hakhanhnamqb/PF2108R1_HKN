@@ -9,14 +9,18 @@
 </head>
 
 <body>
-  <h1>Bouncing Balls</h1>
-  <h2>POINT:</h2>
-  <h3 id="point">0</h3>
-  <button id="bt_start" onclick="start()" >Start</button>
-  <button id="bt_pause" onclick="pause()">Pause</button>
-
-  <canvas id="canvas"></canvas>
-
+  <div class="display">
+    <div class="playgame">
+      <canvas id="canvas"></canvas>
+    </div>
+    <div class="info">
+      <h1>Bouncing Balls</h1>
+      <h2>POINT:</h2>
+      <h3 id="point">0</h3>
+      <button id="bt_start" onclick="start()">Start</button>
+      <button id="bt_pause" onclick="pause()">Pause</button>
+    </div>
+  </div>
   <script src="main-finished.js"></script>
 </body>
 

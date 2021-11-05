@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <style>
+        .div_tong {
+            position: relative;
+        }
+
+        .trai {
+            /* position: absolute; */
+            width: 80%;
+            height:100vh;
+        }
+        .phai{
+            position: relative;
+            width: 20%;
+            height: 100vh;
+        }
+        #canvas{
+            width: 100%;
+            height: 100vh;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div_tong" style="float: left;width:100%;">
+        
+        <div class="phai" style="float: left;">
+            <h3 style="padding: 0px;">1. Hướng dẫn chơi</h3>
+            <p style="padding: 0px;">Người chơi sử dung hai phím di chuyển trái và phải để điều khiển thanh Bar</p>
+            <p>Điểm số sẽ được tính sau mỗi lần viên bi chạm thanh Bar</p>
+            <p>Hãy nhấn vào Pause nếu bạn muốn tạm dừng trò chơi</p>
+        </div>
+        <div class="trai" style="float: left;">
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        const width = canvas.width = window.innerWidth;
+        const height = canvas.height = window.innerHeight;
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(255,0,0,0.5)';
+        ctx.fillRect(0, 0, width, height);
+    </script>
+</body>
+
+</html>

@@ -2,21 +2,34 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <meta charset="utf-8">
+  <title>Bouncing balls</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 
 <body>
-    <h1>bouncing balls</h1>
-    <canvas></canvas>
-
+  <div class="display">
     
-    <script src="Ball.js"></script>
-    <script src="Bar.js"></script>
-    <script src="main.js"></script>
+    <div class="info">
+      <h1>Bouncing Balls</h1>
+      <h2>POINT:</h2>
+      <h3 id="point">0</h3>
+      <button id="bt_start" onclick="start()">Start</button>
+      <button id="bt_pause" onclick="pause()">Pause</button>
+      <h3>1. Hướng dẫn chơi</h3>
+      <p>fbdfdfgdf</p>
+      <audio id="audio" loop controls>
+        <source src="./music/Christmas.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+  <div class="playgame">
+    <canvas id="canvas"></canvas>
+  </div>
+  <script src="Ball.js"></script>
+  <script src="Bar.js"></script>
+  <script src="main.js"></script>
 </body>
 
 </html>
