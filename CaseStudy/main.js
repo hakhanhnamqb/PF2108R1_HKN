@@ -3,6 +3,7 @@ let ball_radius = 15;
 let ball_vel = 5;
 let widthBar = 200;
 let velBar = 100;
+
 // setup canvas
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -36,7 +37,7 @@ while (balls.length < 1) {
 }
 
 // define Bar
-let bar = new Bar(widthBar, (width / 2) - widthBar/2, height - 20, velBar);
+let bar = new Bar(widthBar, (width / 2) - widthBar / 2, height - 20, velBar);
 bar.drawBar();
 
 // define loop that keeps drawing the scene constantly   /định nghĩa vòng lặp giúp vẽ cảnh liên tục
@@ -58,17 +59,30 @@ function loop() {
   }
   if (gameOver) {
     clearInterval(play);
-    if (confirm("Chia buồn, bạn đã đạt " + point + " điểm." + " Bạn có muốn chơi lại?") == true) {
-      gameOver = false;
-      location.reload();
+    if(point>10){
+      clearInterval(play);
+      if (confirm("Quá xuất sắc, " + point + " điểm." + " Bạn có muốn chơi lại?") == true) {
+        gameOver = false;
+        location.reload();
+      }
+    }
+    else if(point>=2){
+      clearInterval(play);
+      if (confirm("Tuyệt vời, ban đạt " + point + " điểm." + " Bạn có muốn chơi lại?") == true) {
+        gameOver = false;
+        location.reload();
+      }
+    }
+    else{
+      clearInterval(play);
+      if (confirm("Chia buồn, bạn đã đạt " + point + " điểm." + " Bạn có muốn chơi lại?") == true) {
+        gameOver = false;
+        location.reload();
+      }
     }
   }
-  if (point>=3){
-    clearInterval(play);
-    if (confirm("Xin chúc mừng, bạn đã đạt " + point + " điểm." + " Bạn có muốn chơi lại?") == true) {
-      gameOver = false;
-      location.reload();
-    }
+  if (point >= 3) {
+    
   }
 }
 $(document).keydown(function (e) {
